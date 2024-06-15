@@ -37,3 +37,8 @@ export function getCaptionUrl(captionArray) {
     captionArray[0].baseUrl
   );
 }
+
+export function getAlphaNumeric(string) {
+  // alphanumeric with - and ' and space
+  return string.replace(/[^a-zA-Z0-9\s'-]/g, "");
+}

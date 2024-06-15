@@ -6,7 +6,7 @@ import Result from "@/components/Result";
 import Search from "@/components/Search";
 import createWordFrequencyMap from "@/utils/createWordFrequencyMap";
 import decodeHtmlEntities from "@/utils/decodeHtmlEntities";
-import { getTextFromXML } from "@/utils/microUtils";
+import { getAlphaNumeric, getTextFromXML } from "@/utils/microUtils";
 import axios from "axios";
 import { Inter } from "next/font/google";
 import Head from "next/head";
@@ -41,7 +41,7 @@ export default function Home({ query }) {
           info = {
             videoDetails: res.data.videoDetails,
             wordFrequency: createWordFrequencyMap(
-              decodeHtmlEntities(getTextFromXML(XMLCaptions))
+              decodeHtmlEntities(getAlphaNumeric(getTextFromXML(XMLCaptions)))
             ),
           };
         })
