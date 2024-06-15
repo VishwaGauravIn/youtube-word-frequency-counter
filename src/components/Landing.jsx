@@ -40,10 +40,10 @@ export default function Landing({ setURL, getResult }) {
         <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
           Discover What YouTubers Say the Most
         </h1>
-        <h3 className="text-sm sm:text-base text-muted-foreground">
+        <h2 className="text-sm sm:text-base text-muted-foreground">
           Discover the Most Frequent Words in YouTube Videos, Word Frequency
           Analyzer for YouTube.
-        </h3>
+        </h2>
       </div>
       <div className="flex flex-wrap self-center justify-center items-center gap-4 px-2 text-sm sm">
         <div className="flex justify-center items-center gap-2">
