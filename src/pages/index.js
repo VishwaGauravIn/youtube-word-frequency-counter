@@ -9,6 +9,7 @@ import decodeHtmlEntities from "@/utils/decodeHtmlEntities";
 import { getTextFromXML } from "@/utils/microUtils";
 import axios from "axios";
 import { Inter } from "next/font/google";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Toaster, toast } from "sonner";
@@ -16,7 +17,7 @@ import ytdl from "ytdl-core";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ query }) {
+export default function Home({ query, fullUrl }) {
   const [url, setUrl] = useState("");
   const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -76,6 +77,52 @@ export default function Home({ query }) {
 
   return (
     <>
+      <Head>
+        <title>
+          YouTube Word Counter: Discover What YouTubers Say the Most
+        </title>
+        <meta
+          name="title"
+          content="YouTube Word Counter: Discover What YouTubers Say the Most"
+        />
+        <meta
+          name="description"
+          content="Discover top words & catchphrases in YouTube videos! Analyze word frequency & understand creators' content deeper. Free YouTube word counter. Try now!"
+        />
+        <meta name="copyright" content="VishwaGauravIn" />
+        <meta
+          name="keywords"
+          content="youtube, word frequency, analyze, video, content, creator, youtube word counter, analyze youtube videos, youtube vocabulary analysis, youtube catchphrase finder"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="ytword.itsvg.in" />
+        <meta
+          property="og:title"
+          content="YouTube Word Counter: Discover What YouTubers Say the Most"
+        />
+        <meta
+          property="og:description"
+          content="Discover top words & catchphrases in YouTube videos! Analyze word frequency & understand creators' content deeper. Free YouTube word counter. Try now!"
+        />
+        <meta
+          property="og:image"
+          content={"https://next-dynamic-og.vercel.app/api/og?url=" + fullUrl}
+        />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="ytword.itsvg.in" />
+        <meta
+          property="twitter:title"
+          content="YouTube Word Counter: Discover What YouTubers Say the Most"
+        />
+        <meta
+          property="twitter:description"
+          content="Discover top words & catchphrases in YouTube videos! Analyze word frequency & understand creators' content deeper. Free YouTube word counter. Try now!"
+        />
+        <meta
+          property="twitter:image"
+          content={"https://next-dynamic-og.vercel.app/api/og?url=" + fullUrl}
+        />
+      </Head>
       <main
         className={`flex min-h-screen flex-col items-center gap-10  ${inter.className}`}
       >
@@ -101,11 +148,15 @@ export default function Home({ query }) {
 }
 
 export const getServerSideProps = async (context) => {
-  const { query } = context;
+  const { req, query } = context;
+  const protocol = req.headers["x-forwarded-proto"] || "https";
+  const host = req.headers["host"];
+  const fullUrl = `${protocol}://${host}${req.url}`;
 
   return {
     props: {
       query,
+      fullUrl,
     },
   };
 };
