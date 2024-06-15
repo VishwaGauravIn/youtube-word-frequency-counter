@@ -126,7 +126,13 @@ export default function Home({ query }) {
       <main
         className={`flex min-h-screen flex-col items-center gap-10  ${inter.className}`}
       >
-        <Navbar />
+        <Navbar
+          resetState={() => {
+            setInfo(null);
+            setUrl("");
+            replace("/");
+          }}
+        />
         <Search
           handleSubmit={handleSubmit}
           url={url}
