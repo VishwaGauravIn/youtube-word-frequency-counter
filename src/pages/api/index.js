@@ -16,6 +16,8 @@ export default async function handler(req, res) {
     videoDetails: {
       videoId: videoDetails.videoId,
       title: videoDetails.title,
+      viewCount: videoDetails.viewCount,
+      author: videoDetails.author,
       thumbnail: {
         thumbnails: [videoDetails.thumbnail.thumbnails[0]],
       },
