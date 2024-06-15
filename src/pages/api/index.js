@@ -13,7 +13,10 @@ export default async function handler(req, res) {
 
   const XMLCaptions = (await axios.get(captionUrl)).data;
 
-  res.status(200).json({
+  // Set cache headers for 1 day (86400 seconds)
+  res.setHeader("Cache-Control", "public, max-age=86400");
+
+  res.json({
     videoDetails: videoDetails,
     XMLCaptions: XMLCaptions,
   });
