@@ -36,17 +36,17 @@ export default function Home({ query }) {
       let info;
       await axios
         .get(`/api?id=${videoID}`)
-        .then(
-          (res) =>
-            (info = {
-              videoDetails: res.data.videoDetails,
-              wordFrequency: createWordFrequencyMap(
-                decodeHtmlEntities(getTextFromXML(res.data.XMLCaptions))
-              ),
-            })
-        )
+        .then(async (res) => {
+          const XMLCaptions = (await axios.get(res.data.captionUrl)).data;
+          info = {
+            videoDetails: res.data.videoDetails,
+            wordFrequency: createWordFrequencyMap(
+              decodeHtmlEntities(getTextFromXML(XMLCaptions))
+            ),
+          };
+        })
         .catch((err) => {
-          // console.error(err);
+          console.error(err);
           toast.error("An error occurred while fetching the video information");
         })
         .finally(() => setLoading(false));

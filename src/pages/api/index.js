@@ -1,6 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
-import axios from "axios";
 import ytdl from "ytdl-core";
 
 export default async function handler(req, res) {
@@ -11,13 +9,11 @@ export default async function handler(req, res) {
       .captionTracks[0].baseUrl;
   let videoDetails = info.player_response.videoDetails;
 
-  const XMLCaptions = (await axios.get(captionUrl)).data;
-
   // Set cache headers for 1 day (86400 seconds)
   res.setHeader("Cache-Control", "public, max-age=86400");
 
   res.json({
     videoDetails: videoDetails,
-    XMLCaptions: XMLCaptions,
+    captionUrl: captionUrl,
   });
 }
