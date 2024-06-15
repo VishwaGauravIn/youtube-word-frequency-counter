@@ -21,7 +21,7 @@ import {
 
 export default function Result({ info }) {
   return (
-    <section className="flex flex-col gap-10">
+    <section className="flex flex-col gap-10 p-2">
       <Card className="flex flex-col sm:flex-row p-4 max-w-2xl gap-4">
         <img
           src={info.videoDetails.thumbnail.thumbnails[0].url}
