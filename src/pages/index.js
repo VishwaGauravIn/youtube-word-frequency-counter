@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Landing from "@/components/Landing";
+import LoadingState from "@/components/LoadingState";
 import Navbar from "@/components/Navbar";
 import Result from "@/components/Result";
 import Search from "@/components/Search";
@@ -17,6 +18,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [url, setUrl] = useState("");
   const [info, setInfo] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e?.preventDefault();
@@ -25,6 +27,7 @@ export default function Home() {
 
   async function getResult(videoURL) {
     if (ytdl.validateURL(videoURL)) {
+      setLoading(true);
       setInfo(null);
       const videoID = ytdl.getVideoID(videoURL);
       let info;
@@ -42,7 +45,8 @@ export default function Home() {
         .catch((err) => {
           console.error(err);
           toast.error("An error occurred while fetching the video information");
-        });
+        })
+        .finally(() => setLoading(false));
       setInfo(info);
       console.log(info);
     } else {
@@ -56,13 +60,14 @@ export default function Home() {
         className={`flex min-h-screen flex-col items-center gap-10  ${inter.className}`}
       >
         <Navbar />
-        <Search handleSubmit={handleSubmit} url={url} setUrl={setUrl} />
-
-        {info ? (
-          <Result info={info} />
-        ) : (
-          <Landing setURL={setUrl} getResult={getResult} />
-        )}
+        <Search handleSubmit={handleSubmit} url={url} setUrl={setUrl} loading={loading} />
+        {loading && <LoadingState />}
+        {!loading &&
+          (info ? (
+            <Result info={info} />
+          ) : (
+            <Landing setURL={setUrl} getResult={getResult} />
+          ))}
         <Footer />
       </main>
       <Toaster richColors position="top-center" />
