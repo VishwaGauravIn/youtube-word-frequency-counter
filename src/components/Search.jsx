@@ -4,7 +4,7 @@ import { SearchIcon } from "lucide-react";
 
 export default function Search({ url, setUrl, handleSubmit, loading }) {
   return (
-    <section className="flex flex-col items-center gap-4 w-full max-w-2xl">
+    <section className="flex flex-col items-center gap-4 w-full max-w-2xl p-2">
       <form
         className="ml-auto flex-1 sm:flex-initial relative w-full"
         onSubmit={handleSubmit}
