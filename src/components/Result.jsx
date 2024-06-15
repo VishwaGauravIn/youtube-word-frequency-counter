@@ -1,5 +1,5 @@
 import React from "react";
-import { Eye } from "lucide-react";
+import { Eye, Forward, Share } from "lucide-react";
 import { Card } from "./ui/card";
 import numFormatter from "js-num-prettier";
 import {
@@ -18,8 +18,30 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "./ui/button";
 
 export default function Result({ info }) {
+  function handleShare() {
+    const shareData = {
+      title: "YouTube Word Frequency Counter",
+      text:
+        "Check out the word frequency of this YouTube video: " +
+        info.videoDetails.title,
+      url:
+        "https://ytword.itsvg.in/?url=https://www.youtube.com/watch?v=" +
+        info.videoDetails.videoId,
+    };
+
+    if (navigator.share) {
+      navigator
+        .share(shareData)
+        .catch((error) => toast.error("Error sharing", error));
+    } else {
+      toast.erro(
+        "Web Share API is not supported in your browser, you can copy the link to share."
+      );
+    }
+  }
   return (
     <section className="flex flex-col gap-10 p-2">
       <Card className="flex flex-col sm:flex-row p-4 max-w-2xl gap-4">
@@ -79,6 +101,9 @@ export default function Result({ info }) {
           </TableBody>
         </Table>
       </Card>
+      <Button variant="outline" onClick={handleShare}>
+        <Forward className="mr-2 h-4 w-4" /> Share this result
+      </Button>
     </section>
   );
 }

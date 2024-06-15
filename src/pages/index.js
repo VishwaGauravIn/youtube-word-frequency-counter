@@ -9,16 +9,18 @@ import decodeHtmlEntities from "@/utils/decodeHtmlEntities";
 import { getTextFromXML } from "@/utils/microUtils";
 import axios from "axios";
 import { Inter } from "next/font/google";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { Toaster, toast } from "sonner";
 import ytdl from "ytdl-core";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ query }) {
   const [url, setUrl] = useState("");
   const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { isReady, replace } = useRouter();
 
   async function handleSubmit(e) {
     e?.preventDefault();
@@ -43,16 +45,32 @@ export default function Home() {
             })
         )
         .catch((err) => {
-          console.error(err);
+          // console.error(err);
           toast.error("An error occurred while fetching the video information");
         })
         .finally(() => setLoading(false));
       setInfo(info);
-      console.log(info);
+      replace("/?url=" + url);
     } else {
       toast.error("Invalid YouTube video URL");
     }
   }
+
+  useState(() => {
+    if (query?.url) {
+      if (ytdl.validateURL(query.url)) {
+        setUrl(query.url);
+        getResult(query.url);
+      } else {
+        setTimeout(() => {
+          if (isReady) {
+            replace("/");
+            toast.error("Invalid YouTube video link in URL");
+          }
+        }, 1000);
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -60,7 +78,12 @@ export default function Home() {
         className={`flex min-h-screen flex-col items-center gap-10  ${inter.className}`}
       >
         <Navbar />
-        <Search handleSubmit={handleSubmit} url={url} setUrl={setUrl} loading={loading} />
+        <Search
+          handleSubmit={handleSubmit}
+          url={url}
+          setUrl={setUrl}
+          loading={loading}
+        />
         {loading && <LoadingState />}
         {!loading &&
           (info ? (
@@ -74,3 +97,13 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = async (context) => {
+  const { query } = context;
+
+  return {
+    props: {
+      query,
+    },
+  };
+};
