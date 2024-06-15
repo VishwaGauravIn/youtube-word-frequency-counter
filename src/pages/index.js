@@ -17,7 +17,7 @@ import ytdl from "ytdl-core";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ query, fullUrl }) {
+export default function Home({ query }) {
   const [url, setUrl] = useState("");
   const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -107,10 +107,7 @@ export default function Home({ query, fullUrl }) {
           property="og:description"
           content="Discover top words & catchphrases in YouTube videos! Analyze word frequency & understand creators' content deeper. Free YouTube word counter. Try now!"
         />
-        <meta
-          property="og:image"
-          content={`https://next-dynamic-og.vercel.app/api/og?url=${fullUrl}`}
-        />
+        <meta property="og:image" content="https://ytword.itsvg.in/og.png" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="ytword.itsvg.in" />
         <meta
@@ -123,7 +120,7 @@ export default function Home({ query, fullUrl }) {
         />
         <meta
           property="twitter:image"
-          content={`https://next-dynamic-og.vercel.app/api/og?url=${fullUrl}`}
+          content="https://ytword.itsvg.in/og.png"
         />
       </Head>
       <main
@@ -151,16 +148,11 @@ export default function Home({ query, fullUrl }) {
 }
 
 export const getServerSideProps = async (context) => {
-  const { req, query } = context;
-  const protocol = req.headers["x-forwarded-proto"] || "https";
-  const host = req.headers["host"];
-  const fullUrl = `${protocol}://${host}${req.url}`;
-  const videoURL = query.url || "";
+  const { query } = context;
 
   return {
     props: {
-      initialVideoURL: videoURL,
-      fullUrl,
+      query,
     },
   };
 };
