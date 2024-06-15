@@ -21,7 +21,7 @@ export default function Landing({ setURL, getResult }) {
           alt=""
           className="rounded-t-sm hover:scale-110 transition-all ease-in-out duration-300"
         />
-        <div className="w-full h-4 z-10 bg-gray-100 relative" />
+        <div className="w-full h-4 z-10 bg-white relative" />
         <div className="p-3 -mt-4">
           <p className="text-center flex flex-col items-center justify-center gap-2">
             {title}
