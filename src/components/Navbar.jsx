@@ -8,7 +8,7 @@ export default function Navbar() {
     <nav className="flex justify-between items-center w-full p-6 gap-4">
       <Link href="/" className="flex gap-2 justify-center items-center">
         <Youtube className="h-10 w-10 stroke-[0.5]" />
-        <span className="sm:block hidden"> YouTube Word Frequency Counter</span>
+        <span className="sm:block hidden"> YouTube Word Frequency Analyzer</span>
       </Link>
       <Link
         href="https://github.com/VishwaGauravIn/youtube-word-frequency-counter"

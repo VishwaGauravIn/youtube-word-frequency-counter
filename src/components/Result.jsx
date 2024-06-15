@@ -1,5 +1,5 @@
 import React from "react";
-import { Eye, Forward, Share } from "lucide-react";
+import { Eye, Forward } from "lucide-react";
 import { Card } from "./ui/card";
 import numFormatter from "js-num-prettier";
 import {
@@ -23,9 +23,9 @@ import { Button } from "./ui/button";
 export default function Result({ info }) {
   function handleShare() {
     const shareData = {
-      title: "YouTube Word Frequency Counter",
+      title: "YouTube Word Frequency Analyzer",
       text:
-        "Check out the word frequency of this YouTube video: " +
+        "Check out the most repeated words in this YouTube video: " +
         info.videoDetails.title,
       url:
         "https://ytword.itsvg.in/?url=https://www.youtube.com/watch?v=" +

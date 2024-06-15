@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "./ui/card";
-import { Clock } from "lucide-react";
+import { Check, Clock, DollarSign, Languages } from "lucide-react";
 
 export default function Landing({ setURL, getResult }) {
   function handleClick(id) {
@@ -11,7 +11,7 @@ export default function Landing({ setURL, getResult }) {
   function videoCard({ title, duration, id, imgID }) {
     return (
       <Card
-        className="flex-1 border rounded-md shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-all ease-in-out duration-300"
+        className="flex-1 border rounded-md shadow-sm overflow-hidden cursor-pointer hover:shadow-lg transition-all ease-in-out duration-300 self-center min-h-64 max-w-sm sm:max-w-full"
         onClick={() => {
           handleClick(id);
         }}
@@ -19,7 +19,7 @@ export default function Landing({ setURL, getResult }) {
         <img
           src={`/${imgID}.webp`}
           alt=""
-          className="rounded-t-sm hover:scale-110 transition-all ease-in-out duration-300"
+          className="rounded-t-sm hover:scale-110 transition-all ease-in-out duration-300 w-full"
         />
         <div className="w-full h-4 z-10 bg-white relative" />
         <div className="p-3 -mt-4">
@@ -35,11 +35,34 @@ export default function Landing({ setURL, getResult }) {
     );
   }
   return (
-    <div className="flex flex-col gap-10 mt-10 w-full max-w-4xl">
+    <div className="flex flex-col gap-10 w-full max-w-4xl">
+      <div className="text-center flex flex-col gap-4 px-4">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+          Discover What YouTubers Say the Most
+        </h1>
+        <h3 className="text-sm sm:text-base text-muted-foreground">
+          Discover the Most Frequent Words in YouTube Videos, Word Frequency
+          Analyzer for YouTube.
+        </h3>
+      </div>
+      <div className="flex flex-wrap self-center justify-center items-center gap-4 px-2 text-sm sm">
+        <div className="flex justify-center items-center gap-2">
+          <Languages className="h-6 w-6 text-green-500 stroke-[1]" />
+          Supports All languages
+        </div>
+        <div className="flex justify-center items-center gap-2">
+          <Check className="h-6 w-6 text-green-500 stroke-[1]" />
+          Supports 99.99% Videos
+        </div>
+        <div className="flex justify-center items-center gap-2">
+          <DollarSign className="h-6 w-6 text-green-500 stroke-[1]" />
+          100% Free to use
+        </div>
+      </div>
       <p className="self-center text-2xl font-semibold opacity-75">
         Try with these Videos
       </p>
-      <div className="flex gap-6 w-full px-4 flex-col sm:flex-row">
+      <div className="flex gap-6 w-full px-4 flex-col sm:flex-row relative">
         {/* 1 */}
         {videoCard({
           title: "Joe Rogan & Elon Musk - Are We in a Simulated Reality?",
