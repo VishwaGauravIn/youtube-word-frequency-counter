@@ -50,7 +50,9 @@ export default function Home({ query }) {
         })
         .finally(() => setLoading(false));
       setInfo(info);
-      replace("/?url=" + url);
+      if (isReady) {
+        replace("/?url=" + url);
+      }
     } else {
       toast.error("Invalid YouTube video URL");
     }
