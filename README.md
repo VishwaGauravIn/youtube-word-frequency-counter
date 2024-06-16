@@ -1,3 +1,34 @@
+<div align="center">
+ <h1> <img src="https://ytword.itsvg.in/android-chrome-192x192.png" width="80px"><br/>YouTube Word Counter</h1>
+ <a href="https://www.buymeacoffee.com/VishwaGauravIn" target="_blank"><img alt="" src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black" style="vertical-align:center" /></a>
+ <img src="https://img.shields.io/npm/v/npm?style=normal"/>
+ <img src="https://img.shields.io/website?style=normal&url=https%3A%2F%2Fytword.itsvg.in/"/> 
+ <img src="https://img.shields.io/badge/License-AGPL%20v3-brightgreen?style=normal"/>
+ <img src="https://img.shields.io/github/languages/code-size/VishwaGauravIn/youtube-word-frequency-counter?logo=github&style=normal"/><br/><br/>
+   Discover What YouTubers Say the Most
+</div>
+<br/>
+
+# Demo
+
+https://github.com/VishwaGauravIn/youtube-word-frequency-counter/assets/81325730/cf1063ff-16a6-48c5-acda-37ec6272fb01
+
+Discover top words & catchphrases in YouTube videos! Analyze word frequency & understand creators' content deeper. Free YouTube word counter. [Try now!](https://ytword.itsvg.in/)
+
+# Features
+- 🔠 Supports All languages
+- ✅ Supports 99.99% Videos
+- 💲 100% Free to use
+
+## [🚀 Try now!](https://ytword.itsvg.in/)
+
+## Tops in all departments 
+<br/>
+
+![psi](https://github.com/VishwaGauravIn/youtube-word-frequency-counter/assets/81325730/eb1e6103-9516-4909-bf79-c1a4af930bfb)
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -24,6 +55,11 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+<details>
+<summary>
+  Learn More
+</summary>
+  
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -33,8 +69,4 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+</details>
