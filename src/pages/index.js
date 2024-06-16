@@ -1,4 +1,4 @@
-import CrispChat from "@/components/Crisp";
+import CrispChat from "@/components/crisp";
 import Footer from "@/components/Footer";
 import Landing from "@/components/Landing";
 import LoadingState from "@/components/LoadingState";
