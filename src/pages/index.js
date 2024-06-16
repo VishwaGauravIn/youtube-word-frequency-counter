@@ -1,3 +1,4 @@
+import CrispChat from "@/components/Crisp";
 import Footer from "@/components/Footer";
 import Landing from "@/components/Landing";
 import LoadingState from "@/components/LoadingState";
@@ -11,6 +12,7 @@ import axios from "axios";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Script from "next/script";
 import { useState } from "react";
 import { Toaster, toast } from "sonner";
 import ytdl from "ytdl-core";
@@ -123,6 +125,22 @@ export default function Home({ query }) {
           content="https://ytword.itsvg.in/og.png"
         />
       </Head>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-NQMC7F3KM2"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NQMC7F3KM2', { page_path: window.location.pathname });
+            `,
+        }}
+      />
       <main
         className={`flex min-h-screen flex-col items-center gap-10  ${inter.className}`}
       >
@@ -148,6 +166,7 @@ export default function Home({ query }) {
           ))}
         <Footer />
       </main>
+      <CrispChat/>
       <Toaster richColors position="top-center" />
     </>
   );
