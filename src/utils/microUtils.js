@@ -40,5 +40,5 @@ export function getCaptionUrl(captionArray) {
 
 export function getAlphaNumeric(string) {
   // alphanumeric with - and ' and space
-  return string.replace(/[^a-zA-Z0-9\s'-]/g, "");
+  return string.replace(/[\p{P}\p{S}]/gu, "");
 }

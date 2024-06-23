@@ -9,7 +9,6 @@ export default function createWordFrequencyMap(text) {
     const normalizedWord = word.toLowerCase();
     wordFrequency[normalizedWord] = (wordFrequency[normalizedWord] || 0) + 1;
   }
-
   return Object.entries(wordFrequency)
     .map(([word, frequency]) => ({ word, frequency }))
     .sort((a, b) => b.frequency - a.frequency);
